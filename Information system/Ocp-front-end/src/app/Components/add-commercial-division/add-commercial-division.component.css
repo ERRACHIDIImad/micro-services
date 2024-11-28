@@ -1,0 +1,7 @@
+.matCard{
+  margin: auto;
+  width:60%;
+}
+mat-form-field{
+  display: block;
+}

@@ -1,0 +1,78 @@
+<div class="container">
+  <mat-toolbar>
+    <button mat-raised-button color="primary" (click)="addProject()">Add Project</button>
+  </mat-toolbar>
+  <mat-card class="matCard">
+    <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+      <mat-card-title >
+        Future projects
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Project Name Column -->
+        <ng-container matColumnDef="projectName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </mat-header-cell>
+          <mat-cell *matCellDef="let project"> {{project.projectName}} </mat-cell>
+        </ng-container>
+
+        <!-- Start Date Column -->
+        <ng-container matColumnDef="startDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </mat-header-cell>
+          <mat-cell *matCellDef="let project"> {{project.startDate}} </mat-cell>
+        </ng-container>
+
+        <!-- End Date Column -->
+        <ng-container matColumnDef="endDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> End Date </mat-header-cell>
+          <mat-cell *matCellDef="let project"> {{project.endDate}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+          <mat-cell *matCellDef="let project">
+            <!-- Example buttons for actions -->
+            <button mat-icon-button color="primary" (click)="update(project.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="delete(project.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="employees">
+          <mat-header-cell *matHeaderCellDef> Employees </mat-header-cell>
+          <mat-cell *matCellDef="let project">
+            <button mat-icon-button color="primary" (click)="getEmployees(project.id)">
+              <mat-icon>check_circle</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+
+      <!-- Paginator -->
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+
+
+  </mat-card>
+
+  <mat-card class="matCard" *ngIf="selectedProjectId!==null">
+    <mat-card-header>
+      <mat-card-title>
+        Employees
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <app-employees [projectId]="selectedProjectId" ></app-employees>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,84 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="myDrawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span style="flex:auto;"></span>
+
+  <button mat-button *ngIf="roles.includes('ADMIN')" [matMenuTriggerFor]="menu">Import</button>
+  <mat-icon *ngIf="roles.includes('ADMIN')">keyboard_arrow_down</mat-icon>
+  <mat-menu #menu>
+    <button mat-menu-item routerLink="/admin/loadStudents">Load Students</button>
+    <button mat-menu-item routerlink="/admin/payments">Load Payments</button>
+  </mat-menu>
+  <button mat-icon-button routerLink="/admin/profile">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <button mat-button *ngIf="username" [matMenuTriggerFor]="profileMenu" class="profile-button">
+    {{ username }}
+  </button>
+  <mat-icon>keyboard_arrow_down</mat-icon>
+  <mat-menu #profileMenu class="custom-menu">
+    <button mat-raised-button class="logout-button" (click)="logout()">Log out</button>
+  </mat-menu>
+
+
+
+
+</mat-toolbar>
+
+<mat-drawer-container class="drawer-container">
+
+  <mat-drawer #myDrawer opened position="start" mode="side">
+    <mat-list >
+      <mat-list-item>
+        <mat-icon>school</mat-icon>
+        <button mat-button routerLink="/admin/students">Students</button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>business</mat-icon>
+        <button mat-button routerLink="/admin/departments">Departments</button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>assignment</mat-icon>
+        <button mat-button routerLink="/admin/projects">Projects</button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>payments</mat-icon>
+        <button mat-button routerLink="/admin/payments">Payments</button>
+      </mat-list-item>
+
+      <mat-list-item style="height:auto">
+        <mat-icon>account_balance</mat-icon>
+        <button mat-button routerLink="/admin/divisions">Divisions</button>
+        <mat-list class="nested-list">
+          <mat-list-item>
+            <mat-icon>construction</mat-icon>
+            <button mat-button routerLink="/admin/mining-division">Mining Division</button>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon>business_center</mat-icon>
+              <button mat-button routerLink="/admin/commercial-division">Commercial Division</button>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon>factory</mat-icon>
+              <button mat-button routerLink="/admin/industrial-division">Industrial Division</button>
+            </mat-list-item>
+
+        </mat-list>
+      </mat-list-item>
+
+        </mat-list>
+
+  </mat-drawer>
+
+
+  <mat-drawer-content>
+    <div style="min-height: 600px;">
+    <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+
+</mat-drawer-container>

@@ -1,0 +1,30 @@
+<div class="container">
+  <mat-card class="mat-card">
+    <mat-card-header>
+      <mat-card-title>
+        Add Market
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content [formGroup]="marketform">
+      <mat-form-field appearance="outline">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location" placeholder="Enter location">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Target Customers</mat-label>
+        <input matInput formControlName="targetCustomers" placeholder="Enter target customers">
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="addMarket()">Submit</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>

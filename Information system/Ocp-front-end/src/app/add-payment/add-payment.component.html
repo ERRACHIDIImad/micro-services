@@ -1,0 +1,59 @@
+<div class="container">
+  <mat-card class="matCard" [formGroup]="PaymentForm">
+
+  <mat-card-header>
+    <mat-card-title>
+      Ajouter un paiement
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="outline">
+      <mat-label>Amount</mat-label>
+      <input matInput formControlName="amount">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Payment date:</mat-label>
+        <input matInput formControlName="date" [matDatepicker]="picker">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field  appearance="outline">
+      <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          @for(type of TypeEnumeration ; track type)
+          {
+            <mat-option [value]="type">{{type}}</mat-option>
+          }
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Status</mat-label>
+      <mat-select formControlName="status">
+        @for (elt of statusEnum ; track elt){
+          <mat-option [value]="elt">{{elt}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Upload File</mat-label>
+      <button matPrefix mat-icon-button (click)="fileInput.click()">
+      <mat-icon>attach_file</mat-icon>
+      </button>
+      <input matInput formControlName="fileName" readonly>
+      <input type="file" (change)="onFileSelected($event)" #fileInput hidden  accept="application/pdf">
+    </mat-form-field>
+
+      <mat-card-actions align="end">
+        <button (click)="addPayment()" mat-raised-button color="primary">Save payment</button>
+      </mat-card-actions>
+    </mat-card-content>
+</mat-card>
+</div>

@@ -1,0 +1,19 @@
+mat-drawer {
+  height: 100%; /* Set the height to fill the entire container */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+}
+
+.nested-list {
+  padding-left: 24px; /* Adjust indentation as needed */
+}
+
+.custom-menu {
+  background-color: yellow; /* Set the background color of the menu to yellow */
+}
+
+.logout-button {
+  width: 100%; /* Make the button full width */
+  color: black; /* Set text color to black */
+  background-color: white; /* Set background color of the button to white */
+}
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="Template1">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a student</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment = "Component">
+    <div style="height:500px;" class="container d-flex align-items-center">
+
+        <div class="row container-fluid">
+            <div class=" col col-6 offset-3">
+                <h3 th:if="${message}"  th:text="${message}"></h3>
+
+                <form method="post" th:action="@{Save}">
+                    <div >
+               <label class="form-label" for="firstname">First name:</label>
+               <input class=" form-control" type="text" name="firstName" id="firstname" th:value="${student.firstName}"/>
+                        <span th:errors="${student.firstName}"></span>
+                    </div>
+                    <div>
+                <label class="form-label" for="lastname">Last name:</label>
+                <input class=" form-control" type="text" name="lastName" id="lastname" th:value="${student.lastName}">
+                        <span th:errors="${student.lastName}"></span>
+                    </div>
+                    <div>
+                <label class="form-label" for="codeCne">Student code:</label>
+                <input class=" form-control" type="text" name="code" id="codeCne" th:value="${student.code}">
+                        <span th:errors="${student.code}"></span>
+                   </div>
+                    <div>
+                <label class="form-label" for="programId">Program Id:</label>
+                <input class=" form-control" type="text" name="programId" id="programId" th:value="${student.programId}">
+                        <span th:errors="${student.programId}"></span>
+                   </div>
+                    <div>
+                <label class="form-label" for="photo">Photo:</label>
+                <input class=" form-control mb-3" type="text" name="photo" id="photo" th:value="${student.photo}">
+                        <span th:errors="${student.photo}"></span>
+                      </div>
+                   <button class="btn btn-outline-secondary" type="submit">Save</button>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+</body>
+</html>

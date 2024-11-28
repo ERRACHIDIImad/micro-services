@@ -1,0 +1,29 @@
+<div class="container">
+  <!--  <mat-toolbar>-->
+  <!--    <button mat-raised-button color="primary" (click)="()">Add Department</button>-->
+  <!--  </mat-toolbar>-->
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Timesheets
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table  mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="workedHours">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>  Worked hours </th>
+          <td mat-cell *matCellDef="let element"> {{element.hoursWorked}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
